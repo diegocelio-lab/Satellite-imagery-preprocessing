@@ -32,7 +32,7 @@ CFLAGS    = $(CXXOPT) -Wall -Wextra -I $(SRCUTILS) $(shell gdal-config --cflags)
 LDFLAGS   = -lpng -ltiff $(shell gdal-config --libs) $(SANITIZE_FLAGS)
 
 # Targets
-all: $(DIR) bin/midway bin/histogram
+all: $(DIR) bin/midway
 default: all
 .PHONY: clean distclean
 
@@ -54,16 +54,10 @@ obj/LibImages.o	: $(SRCUTILS)/LibImages.cpp $(SRCUTILS)/LibImages.h
 obj/midway.o : $(SRCMAIN)/midway.cpp $(SRCMAIN)/midway.h $(SRCUTILS)/utils.h
 	$(CXX) -c -o $@ $(CXXFLAGS) $<
 
-obj/histogram.o	: src/histogram.cpp
-	$(CXX) -c -o $@ $(CXXFLAGS) $<
-
 obj/main.o	: src/main.cpp
 	$(CXX) -c -o $@ $(CXXFLAGS) $<
 
 # --- Link binaries ---
-bin/histogram : obj/mt19937ar.o obj/LibImages.o obj/io_png.o obj/midway.o obj/histogram.o
-	$(CXX) -o $@ $^ $(LDFLAGS)
-
 bin/midway : obj/mt19937ar.o obj/LibImages.o obj/io_png.o obj/midway.o obj/main.o
 	$(CXX) -o $@ $^ $(LDFLAGS)
 

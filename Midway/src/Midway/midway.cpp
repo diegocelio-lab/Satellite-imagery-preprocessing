@@ -2,6 +2,12 @@
  * Copyright (c) 2015, Thierry Guillemot <thierry.guillemot.work@gmail.com>
  * All rights reserved.
  *
+ *
+ * Modifications by Diego Celio, 2026 <diego.celio@me.com>:
+ *  - Added support for TIF 8bit and 16bit inputs
+ *  - Added handling for nodata pixels
+ *  - Generalized to N input images
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
